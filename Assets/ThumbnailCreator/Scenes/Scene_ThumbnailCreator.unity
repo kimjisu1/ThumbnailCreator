@@ -134,12 +134,36 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2747958986137381, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747958986137381, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2747959033164459, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2747959033164459, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747959162397231, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747959162397231, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747959162397231, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747959162397231, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2747959199153684, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
@@ -196,6 +220,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2747959237162520, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747959627441224, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747959627441224, guid: 6fa4becd753486a4980d51cbd0938f9c, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
