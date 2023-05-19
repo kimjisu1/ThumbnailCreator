@@ -1,4 +1,4 @@
-
+ï»¿
 
 
 using System.Collections;
@@ -15,7 +15,7 @@ using System;
 
 public class Panel_ThumbnailCreator : UIBase
 {
-    #region variable º¯¼ö
+    #region variable ë³€ìˆ˜
     public int size;
     public float padding;
 
@@ -43,7 +43,7 @@ public class Panel_ThumbnailCreator : UIBase
     private TMP_Dropdown tmpdrop_ThumbnailBackground;
 
 
-    private string[] backgroundTexts = new string[] { "Å¬¸®¾î", "ºí·¢", "È­ÀÌÆ®", "·¹µå", "±×¸°", "ºí·ç" };
+    private string[] backgroundTexts = new string[] { "í´ë¦¬ì–´", "ë¸”ë™", "í™”ì´íŠ¸", "ë ˆë“œ", "ê·¸ë¦°", "ë¸”ë£¨" };
     private Color[] backgroundColors = new Color[] { Color.clear, Color.black, Color.white, Color.red, Color.green, Color.blue };
     private Dictionary<string, Texture2D> previewDic = new Dictionary<string, Texture2D>();
 
@@ -87,50 +87,50 @@ public class Panel_ThumbnailCreator : UIBase
 
 
 
-    #region Init ÃÊ±âÈ­
+    #region Init ì´ˆê¸°í™”
     protected override void SetMemberUI()
     {
         base.SetMemberUI();
-        
-        
-        /*ÁÂÃø*/
 
-        //ÇÁ¸®ÆÕ ·Îµå °ü·Ã
+
+        /*ì¢Œì¸¡*/
+
+        //í”„ë¦¬íŒ¹ ë¡œë“œ ê´€ë ¨
         btn_LoadPath = GetUI_Button("btn_LoadPath", OnClick_LoadPath);
         txtmp_LoadPath = GetUI_Txtmp("txtmp_LoadPath");
         txtmp_LoadPath.text = PlayerPrefs.GetString("txtmp_LoadPath");
 
-        //½æ³×ÀÏ ¼¼ÀÌºê °ü·Ã
+        //ì¸ë„¤ì¼ ì„¸ì´ë¸Œ ê´€ë ¨
         btn_SavePath = GetUI_Button("btn_SavePath", OnClick_SavePath);
         txtmp_SavePath = GetUI_Txtmp("txtmp_SavePath");
         txtmp_SavePath.text = PlayerPrefs.GetString("txtmp_SavePath");
 
-        //½æ³×ÀÏ ÀúÀå
+        //ì¸ë„¤ì¼ ì €ì¥
         btn_Save = GetUI_Button("btn_Save", OnClick_Save);
 
-        //½æ³×ÀÏ ÀúÀåÆú´õ ¿­±â
+        //ì¸ë„¤ì¼ ì €ì¥í´ë” ì—´ê¸°
         btn_SaveFolder = GetUI_Button("btn_SaveFolder", () => Application.OpenURL(txtmp_SavePath.text));
 
-        //»õ·ÎÀúÀå Åä±Û
+        //ìƒˆë¡œì €ì¥ í† ê¸€
         tog_Save = GetUI_Toggle("tog_Save", () => newSave = true, () => newSave = false);
         tog_Save.isOn = newSave = PlayerPrefs.GetInt("newSave") == 1 ? true : false;
 
 
 
-        /*Áß¾Ó*/
+        /*ì¤‘ì•™*/
 
-        //½æ³×ÀÏ ¹Ì¸®º¸±â
+        //ì¸ë„¤ì¼ ë¯¸ë¦¬ë³´ê¸°
         go_Content = GetChildGObject("go_Content");
         btn_ThumbnailPreview = GetUI_Button("btn_ThumbnailPreview", OnClick_ThumbnailPreview);
 
 
 
-        /*¿ìÃø*/
+        /*ìš°ì¸¡*/
 
-        //¾Ş±ÛXYZ µå·Ó´Ù¿î
+        //ì•µê¸€XYZ ë“œë¡­ë‹¤ìš´
         InitThumbnailAngle();
 
-        //½æ³×ÀÏ ÆĞµù ÀÎÇ²ÇÊµå
+        //ì¸ë„¤ì¼ íŒ¨ë”© ì¸í’‹í•„ë“œ
         input_ThumbnailPadding = GetUI<TMP_InputField>("input_ThumbnailPadding");
         padding = PlayerPrefs.GetFloat("thumbnailPadding");
         input_ThumbnailPadding.text = padding.ToString();
@@ -152,7 +152,7 @@ public class Panel_ThumbnailCreator : UIBase
             input_ThumbnailPadding.text = padding.ToString();
         });
 
-        //½æ³×ÀÏ »çÀÌÁî ÀÎÇ²ÇÊµå
+        //ì¸ë„¤ì¼ ì‚¬ì´ì¦ˆ ì¸í’‹í•„ë“œ
         input_ThumbnailSize = GetUI<TMP_InputField>("input_ThumbnailSize");
         size = PlayerPrefs.GetInt("thumbnailSize");
         input_ThumbnailSize.text = size.ToString();
@@ -174,12 +174,12 @@ public class Panel_ThumbnailCreator : UIBase
             input_ThumbnailSize.text = size.ToString();
         });
 
-        //½æ³×ÀÏ ¹è°æ»ö»ó ÀÌ¹ÌÁö
+        //ì¸ë„¤ì¼ ë°°ê²½ìƒ‰ìƒ ì´ë¯¸ì§€
         img_ThumbnailBackground = GetUI_Img("img_ThumbnailBackground");
-        //½æ³×ÀÏ ¹è°æ»ö»ó µå·Ó´Ù¿î
+        //ì¸ë„¤ì¼ ë°°ê²½ìƒ‰ìƒ ë“œë¡­ë‹¤ìš´
         tmpdrop_ThumbnailBackground = GetUI<TMP_Dropdown>("tmpdrop_ThumbnailBackground");
         InitThumbnailBackground();
-        tmpdrop_ThumbnailBackground.onValueChanged.AddListener((i)=> 
+        tmpdrop_ThumbnailBackground.onValueChanged.AddListener((i) =>
         {
             img_ThumbnailBackground.color = backgroundColors[i];
             PlayerPrefs.SetString("backgroundColor", backgroundTexts[i]);
@@ -193,7 +193,7 @@ public class Panel_ThumbnailCreator : UIBase
     }
 
     /// <summary>
-    /// ½æ³×ÀÏ¾Ş±Û µå·Ó´Ù¿î ÃÊ±âÈ­
+    /// ì¸ë„¤ì¼ì•µê¸€ ë“œë¡­ë‹¤ìš´ ì´ˆê¸°í™”
     /// </summary>
     void InitThumbnailAngle()
     {
@@ -233,7 +233,7 @@ public class Panel_ThumbnailCreator : UIBase
     }
 
     /// <summary>
-    /// ½æ³×ÀÏ ¾Ş±Û ¼Â¾÷
+    /// ì¸ë„¤ì¼ ì•µê¸€ ì…‹ì—…
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="dropdown"></param>
@@ -249,7 +249,7 @@ public class Panel_ThumbnailCreator : UIBase
     }
 
     /// <summary>
-    /// ½æ³×ÀÏ ¹è°æ»ö»ó µå·Ó´Ù¿î ÃÊ±âÈ­
+    /// ì¸ë„¤ì¼ ë°°ê²½ìƒ‰ìƒ ë“œë¡­ë‹¤ìš´ ì´ˆê¸°í™”
     /// </summary>
     void InitThumbnailBackground()
     {
@@ -264,10 +264,10 @@ public class Panel_ThumbnailCreator : UIBase
 
 
 
-    #region OnClick ¿ÂÅ¬¸¯
+    #region OnClick ì˜¨í´ë¦­
 
     /// <summary>
-    /// ÇÁ¸®ÆÕÆĞ½º ·Îµå ºê¶ó¿ìÀú
+    /// í”„ë¦¬íŒ¹íŒ¨ìŠ¤ ë¡œë“œ ë¸Œë¼ìš°ì €
     /// </summary>
     void OnClick_LoadPath()
     {
@@ -278,7 +278,7 @@ public class Panel_ThumbnailCreator : UIBase
 
 
     /// <summary>
-    /// ½æ³×ÀÏÀúÀåÆĞ½º 
+    /// ì¸ë„¤ì¼ì €ì¥íŒ¨ìŠ¤ 
     /// </summary>
     void OnClick_SavePath()
     {
@@ -286,7 +286,7 @@ public class Panel_ThumbnailCreator : UIBase
     }
 
     /// <summary>
-    /// ½æ³×ÀÏ ¹Ì¸®º¸±â
+    /// ì¸ë„¤ì¼ ë¯¸ë¦¬ë³´ê¸°
     /// </summary>
     public void OnClick_ThumbnailPreview()
     {
@@ -298,7 +298,7 @@ public class Panel_ThumbnailCreator : UIBase
     }
 
     /// <summary>
-    /// ½æ³×ÀÏ ÀúÀå
+    /// ì¸ë„¤ì¼ ì €ì¥
     /// </summary>
     private void OnClick_Save()
     {
@@ -316,20 +316,20 @@ public class Panel_ThumbnailCreator : UIBase
             Tex2PNG(item.Value, dicPath, filePath + ".png");
         }
 
-        Debug.Log($"<color=green><b>½æ³×ÀÏ ÀúÀå¿Ï·á</b></color>");
+        Debug.Log($"<color=green><b>ì¸ë„¤ì¼ ì €ì¥ì™„ë£Œ</b></color>");
     }
 
     #endregion
 
 
 
-    #region ThumbnailCreate ½æ³×ÀÏ ¸¸µé±â
+    #region ThumbnailCreate ì¸ë„¤ì¼ ë§Œë“¤ê¸°
     /// <summary>
-    /// ½æ³×ÀÏ ¸¸µé±â
+    /// ì¸ë„¤ì¼ ë§Œë“¤ê¸°
     /// </summary>
     /// <param name="preview">
-    /// ¹Ì¸®º¸±â ÇÏ¸é ½æ³×ÀÏ Ãâ·Â
-    /// ¹Ì¸®º¸±â ¾ÈÇÏ¸é ÀúÀå¿ë µñ¼Å³Ê¸®¿¡ ¼Â¾÷
+    /// ë¯¸ë¦¬ë³´ê¸° í•˜ë©´ ì¸ë„¤ì¼ ì¶œë ¥
+    /// ë¯¸ë¦¬ë³´ê¸° ì•ˆí•˜ë©´ ì €ì¥ìš© ë”•ì…”ë„ˆë¦¬ì— ì…‹ì—…
     /// </param>
     void CreateThumbnails(bool preview)
     {
@@ -347,12 +347,12 @@ public class Panel_ThumbnailCreator : UIBase
 
         if (preview)
         {
-            Debug.Log($"<color=yellow><b>½æ³×ÀÏ ¹Ì¸®º¸±â ¿Ï·á</b></color>");
+            Debug.Log($"<color=yellow><b>ì¸ë„¤ì¼ ë¯¸ë¦¬ë³´ê¸° ì™„ë£Œ</b></color>");
         }
     }
 
     /// <summary>
-    /// ½æ³×ÀÏ ¸¸µé±â
+    /// ì¸ë„¤ì¼ ë§Œë“¤ê¸°
     /// </summary>
     /// <param name="tr"></param>
     /// <param name="preview"></param>
@@ -379,7 +379,7 @@ public class Panel_ThumbnailCreator : UIBase
 
 
 
-    #region ETC ±âÅ¸
+    #region ETC ê¸°íƒ€
     public void OnSuccess_LoadPath(string[] paths)
     {
         for (int i = 0; i < paths.Length; i++)
@@ -387,7 +387,7 @@ public class Panel_ThumbnailCreator : UIBase
             txtmp_LoadPath.text = paths[i];
         }
         PlayerPrefs.SetString("txtmp_LoadPath", txtmp_LoadPath.text);
-        Debug.Log($"<color=white><b>ÇÁ¸®ÆÕ Æú´õ°æ·Î ÀúÀå ¿Ï·á</b></color>");
+        Debug.Log($"<color=white><b>í”„ë¦¬íŒ¹ í´ë”ê²½ë¡œ ì €ì¥ ì™„ë£Œ</b></color>");
     }
 
     public void OnCancel_LoadPath() { }
@@ -400,7 +400,7 @@ public class Panel_ThumbnailCreator : UIBase
             txtmp_SavePath.text = paths[i];
         }
         PlayerPrefs.SetString("txtmp_SavePath", txtmp_SavePath.text);
-        Debug.Log($"<color=white><b>½æ³×ÀÏ Æú´õ°æ·Î ÀúÀå ¿Ï·á</b></color>");
+        Debug.Log($"<color=white><b>ì¸ë„¤ì¼ í´ë”ê²½ë¡œ ì €ì¥ ì™„ë£Œ</b></color>");
         Debug.Log("txtmp_SavePath.text : " + PlayerPrefs.GetString("txtmp_SavePath"));
     }
     public void OnCancel_SavePath() { }
@@ -409,9 +409,9 @@ public class Panel_ThumbnailCreator : UIBase
 
 
 
-    #region Util À¯Æ¿
+    #region Util ìœ í‹¸
     /// <summary>
-    /// Texture2D¸¦ PNG·Î º¯°æÇÏ¿© »ı¼º
+    /// Texture2Dë¥¼ PNGë¡œ ë³€ê²½í•˜ì—¬ ìƒì„±
     /// </summary>
     /// <param name="_path"></param>
     /// <param name="_texture"></param>
@@ -427,7 +427,7 @@ public class Panel_ThumbnailCreator : UIBase
         }
     }
     /// <summary>
-    /// Texture2D¸¦ PNG·Î º¯°æÇÏ¿© »ı¼º
+    /// Texture2Dë¥¼ PNGë¡œ ë³€ê²½í•˜ì—¬ ìƒì„±
     /// </summary>
     /// <param name="_dicPath"></param>
     /// <param name="_texture"></param>
@@ -439,7 +439,7 @@ public class Panel_ThumbnailCreator : UIBase
 
 
     /// <summary>
-    /// pngÀúÀåÀ» À§ÇÑ ÅØ½ºÃÄ º¹Á¦
+    /// pngì €ì¥ì„ ìœ„í•œ í…ìŠ¤ì³ ë³µì œ
     /// </summary>
     /// <param name="source"></param>
     /// <returns></returns>
@@ -463,7 +463,7 @@ public class Panel_ThumbnailCreator : UIBase
         return readableText;
     }
     /// <summary>
-    /// stringÀ» enumÀ¸·Î º¯È¯
+    /// stringì„ enumìœ¼ë¡œ ë³€í™˜
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="_str"></param>
@@ -476,7 +476,7 @@ public class Panel_ThumbnailCreator : UIBase
 
 
     /// <summary>
-    /// enumÀ» stringÀ¸·Î º¯È¯
+    /// enumì„ stringìœ¼ë¡œ ë³€í™˜
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="_enum"></param>
@@ -488,7 +488,7 @@ public class Panel_ThumbnailCreator : UIBase
     }
 
     /// <summary>
-    /// enum¿øÇüÀÇ ±æÀÌ ±¸ÇÏ±â
+    /// enumì›í˜•ì˜ ê¸¸ì´ êµ¬í•˜ê¸°
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
@@ -499,7 +499,7 @@ public class Panel_ThumbnailCreator : UIBase
 
 
     /// <summary>
-    /// ÆÄÀÏ »ı¼º
+    /// íŒŒì¼ ìƒì„±
     /// </summary>
     /// <param name="_DirectoryPath"></param>
     /// <param name="_bytes"></param>
@@ -555,7 +555,7 @@ public class Panel_ThumbnailCreator : UIBase
 
 
 //    //private int[] thumbnailSizes = new int[] { 32, 64, 128, 256, 512, 1024 };
-//    private string[] backgroundTexts = new string[] { "Å¬¸®¾î", "ºí·¢", "È­ÀÌÆ®", "·¹µå", "±×¸°", "ºí·ç" };
+//    private string[] backgroundTexts = new string[] { "í´ë¦¬ì–´", "ë¸”ë™", "í™”ì´íŠ¸", "ë ˆë“œ", "ê·¸ë¦°", "ë¸”ë£¨" };
 //    private Color[] backgroundColors = new Color[] { Color.clear, Color.black, Color.white, Color.red, Color.green, Color.blue };
 
 //    private List<Texture2D> previewList = new List<Texture2D>();
@@ -592,10 +592,10 @@ public class Panel_ThumbnailCreator : UIBase
 //        txtmp_SavePath = GetUI_Txtmp("txtmp_SavePath");
 //        txtmp_SavePath.text = PlayerPrefs.GetString("txtmp_SavePath");
 
-//        //½æ³×ÀÏ Ä«¸Ş¶ó°¢µµ
+//        //ì¸ë„¤ì¼ ì¹´ë©”ë¼ê°ë„
 //        tmpdrop_CameraAngle = GetUI<TMP_Dropdown>("tmpdrop_CameraAngle");
 
-//        //½æ³×ÀÏ »çÀÌÁî
+//        //ì¸ë„¤ì¼ ì‚¬ì´ì¦ˆ
 //        //tmpdrop_ThumbnailSize = GetUI<TMP_Dropdown>("tmpdrop_ThumbnailSize");
 //        //SetThumbnailSize();
 //        //tmpdrop_ThumbnailSize.onValueChanged.AddListener(delegate { OnValueChanged_ThumbnailSize(tmpdrop_ThumbnailSize); });
@@ -606,7 +606,7 @@ public class Panel_ThumbnailCreator : UIBase
 //        //    tmpdrop_ThumbnailSize.SetValueWithoutNotify(sizeIdx);
 //        //}
 
-//        //½æ³×ÀÏ »çÀÌÁî TMP
+//        //ì¸ë„¤ì¼ ì‚¬ì´ì¦ˆ TMP
 //        input_ThumbnailSize = GetUI<TMP_InputField>("input_ThumbnailSize");
 //        size = PlayerPrefs.GetInt("thumbnailSize");
 //        input_ThumbnailSize.text = size.ToString();
@@ -628,10 +628,10 @@ public class Panel_ThumbnailCreator : UIBase
 //            input_ThumbnailSize.text = size.ToString();
 //        });
 
-//        //½æ³×ÀÏÄÃ·¯
+//        //ì¸ë„¤ì¼ì»¬ëŸ¬
 //        img_ThumbnailBackground = GetUI_Img("img_ThumbnailBackground");
 
-//        //½æ³×ÀÏ ¹è°æ
+//        //ì¸ë„¤ì¼ ë°°ê²½
 //        tmpdrop_ThumbnailBackground = GetUI<TMP_Dropdown>("tmpdrop_ThumbnailBackground");
 //        SetThumbnailBackground();
 //        tmpdrop_ThumbnailBackground.onValueChanged.AddListener(OnValueChanged_ThumbnailBackground);
@@ -722,7 +722,7 @@ public class Panel_ThumbnailCreator : UIBase
 //    }
 
 //    /// <summary>
-//    /// ½æ³×ÀÏ ¹Ì¸®º¸±â
+//    /// ì¸ë„¤ì¼ ë¯¸ë¦¬ë³´ê¸°
 //    /// </summary>
 //    public void OnClick_ThumbnailPreview()
 //    {
@@ -826,7 +826,7 @@ public class Panel_ThumbnailCreator : UIBase
 
 
 //    /// <summary>
-//    /// Texture2D¸¦ PNG·Î º¯°æÇÏ¿© »ı¼º
+//    /// Texture2Dë¥¼ PNGë¡œ ë³€ê²½í•˜ì—¬ ìƒì„±
 //    /// </summary>
 //    /// <param name="_path"></param>
 //    /// <param name="_texture"></param>
@@ -836,7 +836,7 @@ public class Panel_ThumbnailCreator : UIBase
 //    }
 
 //    /// <summary>
-//    /// Sprite¸¦ PNG·Î º¯°æÇÏ¿© »ı¼º
+//    /// Spriteë¥¼ PNGë¡œ ë³€ê²½í•˜ì—¬ ìƒì„±
 //    /// </summary>
 //    /// <param name="_path"></param>
 //    /// <param name="_sprite"></param>
@@ -845,7 +845,7 @@ public class Panel_ThumbnailCreator : UIBase
 //        Tex2PNG(_sprite.texture, _dicPath, _filePath);
 //    }
 //    /// <summary>
-//    /// Texture2D¸¦ PNG·Î º¯°æÇÏ¿© »ı¼º
+//    /// Texture2Dë¥¼ PNGë¡œ ë³€ê²½í•˜ì—¬ ìƒì„±
 //    /// </summary>
 //    /// <param name="_dicPath"></param>
 //    /// <param name="_texture"></param>
@@ -859,7 +859,7 @@ public class Panel_ThumbnailCreator : UIBase
 
 
 //    /// <summary>
-//    /// pngÀúÀåÀ» À§ÇÑ ÅØ½ºÃÄ µàÇÃ
+//    /// pngì €ì¥ì„ ìœ„í•œ í…ìŠ¤ì³ ë“€í”Œ
 //    /// </summary>
 //    /// <param name="source"></param>
 //    /// <returns></returns>
@@ -885,7 +885,7 @@ public class Panel_ThumbnailCreator : UIBase
 
 
 //    /// <summary>
-//    /// ÆÄÀÏ »ı¼º
+//    /// íŒŒì¼ ìƒì„±
 //    /// </summary>
 //    /// <param name="_DirectoryPath"></param>
 //    /// <param name="_bytes"></param>
