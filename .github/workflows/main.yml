@@ -6,7 +6,8 @@ on:
       - main
 
 jobs:
-  my_job_name: "test"
+  my_job_name:
+  name: testtt
     runs-on: ubuntu-latest
 
     steps:
