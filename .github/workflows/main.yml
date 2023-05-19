@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  my_job_name: # 원하는 작업의 이름을 정의합니다.
+  my_job_name: "test"
     runs-on: ubuntu-latest
 
     steps:
